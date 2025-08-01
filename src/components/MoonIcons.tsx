@@ -37,16 +37,25 @@ const iconItems = [
 
 const radius = 120
 const iconCount = iconItems.length
-const angleStart = 190
-const angleEnd = 350
+const angleStart = 180
+const angleEnd = 360
 const angles = Array.from({ length: iconCount }, (_, i) =>
   angleStart + ((angleEnd - angleStart) / (iconCount - 1)) * i
 )
 
 export function MoonIcons() {
-  const centerX = 150
-  const centerY = 150
-  
+    const radius = 120
+    const iconCount = iconItems.length
+    const angleStart = 45       // begin at right
+    const angleEnd = 360      // sweep upward left
+
+    const angles = Array.from({ length: iconCount }, (_, i) =>
+    angleStart + ((angleEnd - angleStart) / (iconCount - 1)) * i
+    )
+
+    const centerX = 130         // near left drawer edge
+    const centerY = 300         // lower vertical start point
+
 return (
   <div className="absolute inset-0">
     {iconItems.map((item, index) => {
@@ -59,7 +68,8 @@ return (
           <Tooltip>
             <TooltipTrigger asChild>
               <button
-                className="absolute bg-white text-black p-2 rounded-full shadow-lg hover:scale-110 transition backdrop-blur-sm"
+                className="absolute bg-white text-black p-2 rounded-full shadow-lg transition backdrop-blur-sm hover:scale-110 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:shadow-xl"
+
                 style={{
                   left: `${x}px`,
                   top: `${y - 80}px`,
@@ -81,7 +91,5 @@ return (
     })}
   </div>
 )
-
-
 
 }
